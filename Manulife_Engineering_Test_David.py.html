@@ -1,26 +1,16 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[47]:
-
+import os
+import pandas as pd
+import shutil
 
 # iterate over all files within "Engineering Test Files"
 for file in os.listdir(os.path.expanduser("~/Desktop/Engineering Test Files/")):
     if file.endswith(".csv"):
         tmp = pd.read_csv(os.path.join("~/Desktop/Engineering Test Files/",file))
         tmp.to_csv("combined.csv", index=True, header=True, mode='a') #combined file created
-        
-  
-
-
-# In[51]:
-
-
-import shutil
+ 
 #moving the combined.csv into the proper folder
 userhome = os.path.expanduser('~')
 original= userhome + r'/combined.csv'
 target = userhome + r'/Desktop/Engineering Test Files/'
-
 shutil.move(original,target)
 
